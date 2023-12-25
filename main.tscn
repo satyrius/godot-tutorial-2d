@@ -13,17 +13,26 @@ _data = {
 }
 point_count = 5
 
-[node name="Main" type="Node"]
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_e85tn")
 mob_scene = ExtResource("2_dbg11")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.933543, 0.86203, 0.831036, 1)
+
+[node name="HUD" parent="." instance=ExtResource("4_r4sl5")]
 
 [node name="Player" parent="." instance=ExtResource("1_6mhkd")]
 
@@ -36,15 +45,10 @@ wait_time = 0.5
 wait_time = 2.0
 one_shot = true
 
-[node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(240, 450)
-
 [node name="MobPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_qe8mm")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
-
-[node name="HUD" parent="." instance=ExtResource("4_r4sl5")]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_mg7n8")
@@ -52,8 +56,8 @@ stream = ExtResource("5_mg7n8")
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_gyem0")
 
+[connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
-[connection signal="start_game" from="HUD" to="." method="new_game"]

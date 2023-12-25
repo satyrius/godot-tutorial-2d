@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 @export var mob_scene: PackedScene
 var score
@@ -14,7 +14,7 @@ func game_over():
 
 func new_game():
 	score = 0
-	$Player.start($StartPosition.position)
+	$Player.start(get_viewport_rect().size / 2)
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
