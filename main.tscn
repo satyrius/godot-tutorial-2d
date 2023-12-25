@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8667a1mo60sc"]
+[gd_scene load_steps=7 format=3 uid="uid://b8667a1mo60sc"]
 
 [ext_resource type="PackedScene" uid="uid://bf0bee4xqit16" path="res://player.tscn" id="1_6mhkd"]
 [ext_resource type="Script" path="res://main.gd" id="1_e85tn"]
@@ -6,12 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b3rtwqhfnwyec" path="res://hud.tscn" id="4_r4sl5"]
 [ext_resource type="AudioStream" uid="uid://ch3fn5bjhuf44" path="res://art/House In a Forest Loop.ogg" id="5_mg7n8"]
 [ext_resource type="AudioStream" uid="uid://dx3uvpukjvv56" path="res://art/gameover.wav" id="6_gyem0"]
-
-[sub_resource type="Curve2D" id="Curve2D_qe8mm"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0)
-}
-point_count = 5
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -44,11 +38,6 @@ wait_time = 0.5
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-
-[node name="MobPath" type="Path2D" parent="."]
-curve = SubResource("Curve2D_qe8mm")
-
-[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_mg7n8")

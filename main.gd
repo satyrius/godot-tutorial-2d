@@ -36,23 +36,28 @@ func _on_mob_timer_timeout():
 	# Create a new instance of the Mob scene.
 	var mob = mob_scene.instantiate()
 
-	# Choose a random location on Path2D.
-	var mob_spawn_location = get_node("MobPath/MobSpawnLocation")
-	mob_spawn_location.progress_ratio = randf()
-
-	# Set the mob's direction perpendicular to the path direction.
-	var direction = mob_spawn_location.rotation + PI / 2
-
-	# Set the mob's position to a random location.
-	mob.position = mob_spawn_location.position
+	var viewport_rect = get_viewport_rect()
+	# Choose random edge: 0 for left, 1 for top, 2 for right, 3 for bottom
+	match(randi() % 4):
+		0:  # Left
+			mob.position = Vector2(0, randf_range(0, viewport_rect.size.y))
+			mob.rotation = atan2(0, 1)  # pointing rightwards
+		1:  # Top
+			mob.position = Vector2(randf_range(0, viewport_rect.size.x), 0)
+			mob.rotation = atan2(1, 0)  # pointing downwards
+		2:  # Right
+			mob.position = Vector2(viewport_rect.size.x, randf_range(0, viewport_rect.size.y))
+			mob.rotation = atan2(0, -1)  # pointing leftwards
+		3:  # Bottom
+			mob.position = Vector2(randf_range(0, viewport_rect.size.x), viewport_rect.size.y)
+			mob.rotation = atan2(-1, 0)  # pointing upwards
 
 	# Add some randomness to the direction.
-	direction += randf_range(-PI / 4, PI / 4)
-	mob.rotation = direction
+	mob.rotation = mob.rotation + randf_range(-PI / 4, PI / 4)
 
 	# Choose the velocity for the mob.
 	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
-	mob.linear_velocity = velocity.rotated(direction)
+	mob.linear_velocity = velocity.rotated(mob.rotation)
 
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
