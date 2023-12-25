@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://b8667a1mo60sc"]
 
-[ext_resource type="PackedScene" uid="uid://bf0bee4xqit16" path="res://Player.tscn" id="1_6mhkd"]
-[ext_resource type="Script" path="res://Main.gd" id="1_e85tn"]
-[ext_resource type="PackedScene" uid="uid://x6onedc75hoj" path="res://Mob.tscn" id="2_dbg11"]
+[ext_resource type="PackedScene" uid="uid://bf0bee4xqit16" path="res://player.tscn" id="1_6mhkd"]
+[ext_resource type="Script" path="res://main.gd" id="1_e85tn"]
+[ext_resource type="PackedScene" uid="uid://x6onedc75hoj" path="res://mob.tscn" id="2_dbg11"]
 [ext_resource type="PackedScene" uid="uid://b3rtwqhfnwyec" path="res://hud.tscn" id="4_r4sl5"]
 [ext_resource type="AudioStream" uid="uid://ch3fn5bjhuf44" path="res://art/House In a Forest Loop.ogg" id="5_mg7n8"]
 [ext_resource type="AudioStream" uid="uid://dx3uvpukjvv56" path="res://art/gameover.wav" id="6_gyem0"]
