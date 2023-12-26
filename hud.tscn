@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3rtwqhfnwyec"]
+[gd_scene load_steps=6 format=3 uid="uid://b3rtwqhfnwyec"]
 
 [ext_resource type="FontFile" uid="uid://dh2ydvkqebstf" path="res://fonts/Xolonium-Regular.ttf" id="1_omg7h"]
 [ext_resource type="Script" path="res://hud.gd" id="1_r5puw"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://joystick/virtual_joystick.tscn" id="2_2hs21"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_xhqjl"]
 action = &"start_game"
@@ -12,14 +13,16 @@ events = [SubResource("InputEventAction_xhqjl")]
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_r5puw")
 
+[node name="Joystick" parent="." instance=ExtResource("2_2hs21")]
+
 [node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -22.5
-offset_top = 50.0
+offset_top = 100.0
 offset_right = 22.5
-offset_bottom = 128.0
+offset_bottom = 178.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_omg7h")
 theme_override_font_sizes/font_size = 64
@@ -49,10 +52,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -88.5
-offset_top = -140.0
-offset_right = 111.5
-offset_bottom = -40.0
+offset_left = -100.0
+offset_top = -200.0
+offset_right = 100.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_omg7h")

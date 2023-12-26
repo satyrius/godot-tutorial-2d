@@ -4,6 +4,10 @@ extends CanvasLayer
 signal start_game
 
 
+func _ready():
+	$Joystick.hide()
+
+
 func show_message(text):
 	$Message.text = text
 	$Message.show()
@@ -19,6 +23,7 @@ func show_game_over():
 	$Message.show()
 	# Make a one-shot timer and wait for it to finish.
 	await get_tree().create_timer(1.0).timeout
+	$Joystick.hide()
 	$StartButton.show()
 	
 	
@@ -32,4 +37,5 @@ func _on_message_timer_timeout():
 
 func _on_start_button_pressed():
 	$StartButton.hide()
+	$Joystick.show()
 	start_game.emit()
